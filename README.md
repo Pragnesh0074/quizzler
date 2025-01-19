@@ -1,6 +1,6 @@
 # quizzler
 
-A new Flutter project.
+A quiz app made by flutter.
 
 ## Getting Started
 
