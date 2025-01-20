@@ -109,6 +109,7 @@ class _HomePageState extends State<HomePage> {
 
   int counter = 0;
   List<String> userAnswers = [];
+  late Size screenSize;
 
   void reset() {
     counter = 0;
@@ -141,19 +142,22 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(24, 24, 24, 1),
         title: Padding(
-          padding: const EdgeInsets.only(top: 10, left: 40),
+          padding: EdgeInsets.only(
+              left: screenSize.width / 8, top: screenSize.height / 50),
           child: Text(
             'Quizzler',
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
         ),
         actions: [
-          Container(
-            padding: EdgeInsets.only(right: 40, top: 20),
+          Padding(
+            padding: EdgeInsets.only(
+                right: screenSize.width / 8, top: screenSize.height / 50),
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -181,7 +185,8 @@ class _HomePageState extends State<HomePage> {
             children: [
               Text(questions.elementAt(counter)['question'],
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white, fontSize: 30)),
+                  style: TextStyle(
+                      color: Colors.white, fontSize: screenSize.width / 12)),
               SizedBox(height: 50),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -191,12 +196,14 @@ class _HomePageState extends State<HomePage> {
                     correctAnswer:
                         questions.elementAt(counter)['correctAnswer'],
                     onNextQuestion: nextQuestion,
+                    screenSize: screenSize,
                   ),
                   OptionBtn(
                     option: questions.elementAt(counter)['options'][1],
                     correctAnswer:
                         questions.elementAt(counter)['correctAnswer'],
                     onNextQuestion: nextQuestion,
+                    screenSize: screenSize,
                   ),
                 ],
               ),
@@ -209,12 +216,14 @@ class _HomePageState extends State<HomePage> {
                     correctAnswer:
                         questions.elementAt(counter)['correctAnswer'],
                     onNextQuestion: nextQuestion,
+                    screenSize: screenSize,
                   ),
                   OptionBtn(
                     option: questions.elementAt(counter)['options'][3],
                     correctAnswer:
                         questions.elementAt(counter)['correctAnswer'],
                     onNextQuestion: nextQuestion,
+                    screenSize: screenSize,
                   ),
                 ],
               ),
@@ -230,12 +239,14 @@ class OptionBtn extends StatefulWidget {
   final String option;
   final String correctAnswer;
   final Function(String) onNextQuestion;
+  final Size screenSize;
 
   const OptionBtn({
     super.key,
     required this.option,
     required this.correctAnswer,
     required this.onNextQuestion,
+    required this.screenSize,
   });
 
   @override
@@ -267,8 +278,10 @@ class _OptionBtnState extends State<OptionBtn> {
     return InkWell(
       onTap: checkAnswer,
       child: Container(
-        width: 150,
-        height: 100,
+        width: widget.screenSize.width / 2.5,
+        // width: 150,
+        height: widget.screenSize.height / 10,
+        // height: 50,
         decoration: BoxDecoration(
           color: btnBg,
           borderRadius: BorderRadius.circular(10),
@@ -277,7 +290,8 @@ class _OptionBtnState extends State<OptionBtn> {
         child: Center(
           child: Text(widget.option,
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 18)),
+              style: TextStyle(
+                  color: Colors.white, fontSize: widget.screenSize.width / 22)),
         ),
       ),
     );

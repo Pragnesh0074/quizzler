@@ -10,8 +10,10 @@ class Resultpage extends StatefulWidget {
 }
 
 class _ResultpageState extends State<Resultpage> {
+  late Size screenSize;
   @override
   Widget build(BuildContext context) {
+    screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
@@ -25,7 +27,10 @@ class _ResultpageState extends State<Resultpage> {
         width: double.maxFinite,
         color: Color.fromRGBO(24, 24, 24, 1),
         child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
+          padding: EdgeInsets.only(
+              left: screenSize.width / 4,
+              right: screenSize.width / 4,
+              top: screenSize.height / 4),
           child: Column(
             children: [
               SizedBox(
@@ -35,7 +40,7 @@ class _ResultpageState extends State<Resultpage> {
                 'Your Score',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 30,
+                  fontSize: screenSize.width / 10,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -54,8 +59,8 @@ class _ResultpageState extends State<Resultpage> {
                 height: 20,
               ),
               SizedBox(
-                height: 50,
-                width: 150,
+                height: screenSize.height / 12,
+                width: screenSize.width / 2,
                 child: ElevatedButton(
                   onPressed: () {
                     widget.reset();
@@ -63,7 +68,8 @@ class _ResultpageState extends State<Resultpage> {
                   },
                   child: Text(
                     'Play Again',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
+                    style: TextStyle(
+                        color: Colors.black, fontSize: screenSize.width / 18),
                   ),
                 ),
               ),
