@@ -186,7 +186,7 @@ class _HomePageState extends State<HomePage> {
               Text(questions.elementAt(counter)['question'],
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: Colors.white, fontSize: screenSize.width / 12)),
+                      color: Colors.white, fontSize: screenSize.width / 20)),
               SizedBox(height: 50),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -291,7 +291,7 @@ class _OptionBtnState extends State<OptionBtn> {
           child: Text(widget.option,
               textAlign: TextAlign.center,
               style: TextStyle(
-                  color: Colors.white, fontSize: widget.screenSize.width / 22)),
+                  color: Colors.white, fontSize: widget.screenSize.width / 30)),
         ),
       ),
     );

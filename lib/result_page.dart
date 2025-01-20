@@ -40,7 +40,7 @@ class _ResultpageState extends State<Resultpage> {
                 'Your Score',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: screenSize.width / 10,
+                  fontSize: screenSize.width / 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -51,7 +51,7 @@ class _ResultpageState extends State<Resultpage> {
                 '${widget.answers.where((element) => element == 'correct').length}/${widget.answers.length}',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 30,
+                  fontSize: screenSize.width / 30,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -69,7 +69,7 @@ class _ResultpageState extends State<Resultpage> {
                   child: Text(
                     'Play Again',
                     style: TextStyle(
-                        color: Colors.black, fontSize: screenSize.width / 18),
+                        color: Colors.black, fontSize: screenSize.width / 35),
                   ),
                 ),
               ),
